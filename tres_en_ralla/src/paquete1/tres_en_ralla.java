@@ -131,7 +131,24 @@ public class tres_en_ralla {
             if (!juegoTerminado) { // Este if verifica que mientras no se haya terminado el juego canvie al siguiente jugador
                 turno = turno.equals(jugador1) ? jugador2 : jugador1; // Alternar el turno de los juagadores
             }
-        }    
+        } 
+        
+     // Preguntar al jugador rival si vol tornar a jugar
+        System.out.print("¿Quieren jugar otra vez? (s/n): ");
+        char revancha = sc.next().charAt(0); // Lee la decisión del jugador rival
+        if (revancha == 's') {
+            // Reinicia el tablero y el juego
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    tablero[i][j] = " "; // Vacia las casillas
+                }
+            }
+            movimientos = 0; // Reiniciar contador de movimientos
+            juegoTerminado = false; // Reiniciar estado del juego
+            main(args); // Reinicia el juego desde el principio.
+        } else {
+            System.out.println("Gracias por jugar. ¡Hasta la próxima!"); // Printara este mensaje por pantalla si no queremos jugar mas.
+        }
 	}		
 }
 
