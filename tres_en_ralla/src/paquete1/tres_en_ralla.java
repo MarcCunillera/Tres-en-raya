@@ -1,5 +1,8 @@
 package paquete1;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class tres_en_ralla {
 
 	public static void main(String[] args) {
@@ -8,6 +11,12 @@ public class tres_en_ralla {
 		System.out.println("--------------------------");
 		System.out.println("-      Tres en raya      -");
 		System.out.println("--------------------------");
+		
+		Scanner sc = new Scanner(System.in);
+		Random aleatorio = new Random();
+		
+		String[][] tablero = new String[3][3];
+		String jugador1, jugador2, turno;
 		
 		System.out.println("--- Reglas del juego: ---\n"
 			+ "\n"
@@ -25,13 +34,27 @@ public class tres_en_ralla {
 			+ "\n");
 		System.out.println("------------------------------------------------------------------------------------------------------------------------------");
 				
-		String[][] tablero = new String[3][3];
-		
 		// Inicializamos el tablero
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 tablero[i][j] = " "; // Casillas vacías
             }
+        }
+        
+//      Pedimos por pantalla el nombre de los jugadores
+		System.out.println("Inserta el nombre del jugador 1:");
+		jugador1 = sc.next();
+		
+		System.out.println("Inserta el nombre del jugador 2:");
+		jugador2 = sc.next();
+		
+//		Da aleatoriamente el jugador que empieza a tirar en la partida
+		if (aleatorio.nextInt(2) == 0) {
+            turno = jugador1;
+            System.out.println(jugador1 + " empieza.");
+        } else {
+            turno = jugador2;
+            System.out.println(jugador2 + " empieza.");
         }
 	}
 
