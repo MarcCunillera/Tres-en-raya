@@ -99,7 +99,29 @@ public class tres_en_ralla {
                     break; //Sale del bucle
                 }
             }
-	}	}	
+            // Comprobamos la diagonal
+            if (tablero[0][0].equals(tablero[1][1]) && tablero[1][1].equals(tablero[2][2]) && !tablero[0][0].equals(" ") || 
+	            tablero[0][2].equals(tablero[1][1]) && tablero[1][1].equals(tablero[2][0]) && !tablero[0][2].equals(" ")) {
+            		ganador = true; // Este if sirve para ver si se cumple alguna condición en diagonal
+            }
+	         
+            // Mostrar el tablero final si hay un ganador
+            if (ganador) {
+                System.out.println("¡" + turno + " ha ganado!");
+                System.out.println();
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(" " + tablero[i][j] + " "); // Muestra la casilla
+                        if (j < 2) System.out.print("|"); // Muestra los separadores verticales
+                    }
+                    System.out.println();
+                    if (i < 2) System.out.println("---+---+---"); // Muestra los separadores horizontales
+                }
+                System.out.println();
+                juegoTerminado = true; // Terminar el juego
+            }
+        }    
+	}		
 }
 
 
