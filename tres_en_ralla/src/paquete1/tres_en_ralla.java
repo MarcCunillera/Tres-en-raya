@@ -120,6 +120,17 @@ public class tres_en_ralla {
                 System.out.println();
                 juegoTerminado = true; // Terminar el juego
             }
+            
+            // Comproba si hay empate en la partida
+            if (movimientos == 9 && !ganador) {
+                System.out.println("¡Es un empate!"); // Muestra este mensaje si hay un enpate
+                juegoTerminado = true; // Termina el juego
+            }
+            
+            // Cambiar de turno mientras no se haya terminado el juego
+            if (!juegoTerminado) { // Este if verifica que mientras no se haya terminado el juego canvie al siguiente jugador
+                turno = turno.equals(jugador1) ? jugador2 : jugador1; // Alternar el turno de los juagadores
+            }
         }    
 	}		
 }
