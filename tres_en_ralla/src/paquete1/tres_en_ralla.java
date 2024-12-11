@@ -56,6 +56,37 @@ public class tres_en_ralla {
             turno = jugador2;
             System.out.println(jugador2 + " empieza.");
         }
-	}
-
+		
+		// Variables para controlar el juego
+        boolean juegoTerminado = false; // Indica si el juego a terminado
+        int movimientos = 0; // Creamos un contador de movimientos
+        
+        //Hacemos un bucle para mostrar el tablero
+        while (!juegoTerminado) { //Hacemos un bucle while
+            // Mostrar el tablero 
+            System.out.println();
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    System.out.print(" " + tablero[i][j] + " "); // MOstramos las csillas del tablero 
+                    if (j < 2) System.out.print("|"); // Ponemos los separadores verticales para separar las casillas
+                }
+                System.out.println();
+                if (i < 2) System.out.println("---+---+---"); // Ponemos los separadores horizontales para separar las casillas
+            }
+            System.out.println();
+            
+            // Pedimos al jugador que haga un movimiento
+            System.out.println(turno + ", es tu turno. Elige una fila y una columna (1-3):");
+            int fila = sc.nextInt() - 1; // lee la fila y convierte a indice de array
+            int columna = sc.nextInt() - 1; // lee la columna y convierte a indice de array
+            
+            // Comprobamos si la posición que ha dado es válida
+            if (fila < 0 || fila >= 3 || columna < 0 || columna >= 3 || !tablero[fila][columna].equals(" ")) {
+                System.out.println("Movimiento inválido, intenta de nuevo."); // sino es valida sale el mensaje de error y buelve al principio
+                continue; // Si es valida volvemos al principio del bucle
+            }
+        }
+	}		
 }
+
+
