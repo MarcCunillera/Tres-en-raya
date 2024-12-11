@@ -85,8 +85,21 @@ public class tres_en_ralla {
                 System.out.println("Movimiento inválido, intenta de nuevo."); // sino es valida sale el mensaje de error y buelve al principio
                 continue; // Si es valida volvemos al principio del bucle
             }
-        }
-	}		
+            
+            // Ponemos la ficha en el tablero
+            tablero[fila][columna] = turno.equals(jugador1) ? "X" : "O"; // Asignar "X" o "O" dependiendo del jugador 
+            movimientos++; // Incrementamos contador de movimientos
+            
+            // Comprobamos si hay un ganador
+            boolean ganador = false; // Esta variable indicar si hay un ganador
+            for (int i = 0; i < 3; i++) {
+                if (tablero[i][0].equals(tablero[i][1]) && tablero[i][1].equals(tablero[i][2]) && !tablero[i][0].equals(" ") || 
+                    tablero[0][i].equals(tablero[1][i]) && tablero[1][i].equals(tablero[2][i]) && !tablero[0][i].equals(" ")) {
+                    ganador = true; // Abra un ganador si se cumple alguna condición de fila o columna
+                    break; //Sale del bucle
+                }
+            }
+	}	}	
 }
 
 
