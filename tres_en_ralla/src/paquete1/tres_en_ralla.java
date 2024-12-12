@@ -42,10 +42,10 @@ public class tres_en_ralla {
         }
         
 //      Pedimos por pantalla el nombre de los jugadores
-		System.out.println("Inserta el nombre del jugador 1:");
+		System.out.println("Nombre del jugador 1:");
 		jugador1 = sc.next();
 		
-		System.out.println("Inserta el nombre del jugador 2:");
+		System.out.println("Nombre del jugador 2:");
 		jugador2 = sc.next();
 		
 //		Da aleatoriamente el jugador que empieza a tirar en la partida
@@ -75,14 +75,19 @@ public class tres_en_ralla {
             }
             System.out.println();
             
+            // Determinar la ficha del jugador actual
+            String ficha = turno.equals(jugador1) ? "X" : "O"; 
+            
+            // Informar al jugador de su ficha
+            System.out.println(turno + ", es tu turno. Juegas con la ficha " + ficha + ". Elige una fila y una columna (1-3):"); // Printamos esto por pantalla 
+            
             // Pedimos al jugador que haga un movimiento
-            System.out.println(turno + ", es tu turno. Elige una fila y una columna (1-3):");
             int fila = sc.nextInt() - 1; // lee la fila y convierte a indice de array
             int columna = sc.nextInt() - 1; // lee la columna y convierte a indice de array
             
             // Comprobamos si la posición que ha dado es válida
             if (fila < 0 || fila >= 3 || columna < 0 || columna >= 3 || !tablero[fila][columna].equals(" ")) {
-                System.out.println("Movimiento inválido, intenta de nuevo."); // sino es valida sale el mensaje de error y buelve al principio
+                System.out.println("Movimiento erroneo, intentalo de nuevo."); // sino es valida sale el mensaje de error y buelve al principio
                 continue; // Si es valida volvemos al principio del bucle
             }
             
@@ -123,7 +128,7 @@ public class tres_en_ralla {
             
             // Comproba si hay empate en la partida
             if (movimientos == 9 && !ganador) {
-                System.out.println("¡Es un empate!"); // Muestra este mensaje si hay un enpate
+                System.out.println("¡Han quedado empate!"); // Muestra este mensaje si hay un enpate
                 juegoTerminado = true; // Termina el juego
             }
             
@@ -133,8 +138,8 @@ public class tres_en_ralla {
             }
         } 
         
-     // Preguntar al jugador rival si vol tornar a jugar
-        System.out.print("¿Quieren jugar otra vez? (s/n): ");
+        // Preguntar al jugador rival si vol tornar a jugar
+        System.out.print("¿Quieren jugar otra partida? (s/n): ");
         char revancha = sc.next().charAt(0); // Lee la decisión del jugador rival
         if (revancha == 's') {
             // Reinicia el tablero y el juego
